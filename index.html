@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signvrse | AI-Powered Inclusion</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.png" />
+    <meta name="theme-color" content="#f8fafc">
+    
+    <!-- SEO & Open Graph -->
+    <meta name="description" content="Signvrse is an AI-powered accessibility platform transforming sign language interpretation with real-time avatars and generative AI.">
+    <meta name="keywords" content="Sign Language, AI, Accessibility, Deaf, Interpretation, Avatar, Generative AI">
+    <meta property="og:title" content="Signvrse">
+    <meta property="og:description" content="Real-time sign language interpretation, 3D avatars, and accessibility tools.">
+    <meta property="og:image" content="https://plus.unsplash.com/premium_photo-1682124659717-4576eb19f6d4?q=80&w=1922&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Red Hat Display', 'sans-serif'],
+              display: ['Red Hat Display', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#3b82f6', // Standard Blue
+                600: '#2563eb', // Brand Primary
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+                950: '#172554',
+              },
+              accent: {
+                DEFAULT: '#2563eb', 
+                light: '#60a5fa',
+              }
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'float-mini': 'float-mini 4s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'sway': 'sway 3s ease-in-out infinite',
+              'wiggle': 'wiggle 3s ease-in-out infinite',
+              'breathe': 'breathe 4s ease-in-out infinite',
+              'gradient-shift': 'gradient-shift 30s ease infinite',
+              'marquee': 'marquee 25s linear infinite',
+              'marquee-reverse': 'marquee-reverse 25s linear infinite',
+              'blob': 'blob 25s infinite',
+              'scroll': 'scroll 40s linear infinite',
+              'scroll-reverse': 'scroll-reverse 40s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              'float-mini': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-6px)' },
+              },
+              sway: {
+                '0%, 100%': { transform: 'rotate(-6deg)' },
+                '50%': { transform: 'rotate(6deg)' },
+              },
+              wiggle: {
+                '0%, 100%': { transform: 'rotate(-3deg)' },
+                '50%': { transform: 'rotate(3deg)' },
+              },
+              breathe: {
+                '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                '50%': { transform: 'scale(1.1)', opacity: '0.8' },
+              },
+              'gradient-shift': {
+                '0%, 100%': { 'background-position': '0% 50%' },
+                '50%': { 'background-position': '100% 50%' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
+              'marquee-reverse': {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(0%)' },
+              },
+              blob: {
+                "0%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+                "33%": {
+                  transform: "translate(30px, -50px) scale(1.1)",
+                },
+                "66%": {
+                  transform: "translate(-20px, 20px) scale(0.9)",
+                },
+                "100%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+              },
+              scroll: {
+                '0%': { transform: 'translateY(0)' },
+                '100%': { transform: 'translateY(-50%)' },
+              },
+              'scroll-reverse': {
+                '0%': { transform: 'translateY(-50%)' },
+                '100%': { transform: 'translateY(0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f8fafc; /* Slate 50 - Softer on eyes */
+        color: #0f172a; /* Slate 900 */
+        transition: filter 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Dark Mode Global Overrides */
+      .dark body {
+        background-color: #020617; /* Slate 950 */
+        color: #f8fafc; /* Slate 50 */
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(226, 232, 240, 0.8); /* Slate 200 */
+      }
+      .dark .glass-panel {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(51, 65, 85, 0.8); /* Slate 700 */
+      }
+
+      .text-gradient {
+        background: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* --- Accessibility Overrides --- */
+
+      /* 1. Visual: Contrast & Color */
+      .accessibility-grayscale {
+        filter: grayscale(100%) !important;
+      }
+      
+      .accessibility-high-contrast {
+        background-color: #000000 !important;
+        color: #ffff00 !important;
+      }
+      .accessibility-high-contrast * {
+        background-color: #000000 !important;
+        color: #ffff00 !important;
+        border-color: #ffff00 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+      .accessibility-high-contrast img, 
+      .accessibility-high-contrast video {
+        filter: grayscale(100%) contrast(150%);
+      }
+      .accessibility-high-contrast a {
+        color: #00ffff !important;
+        text-decoration: underline !important;
+      }
+      .accessibility-high-contrast button {
+        border: 2px solid #ffff00 !important;
+      }
+
+      .accessibility-invert {
+        filter: invert(100%) !important;
+        background-color: #fff; 
+      }
+      .accessibility-invert img,
+      .accessibility-invert video {
+        filter: invert(100%) !important;
+      }
+
+      /* 2. Visual: Text Sizing */
+      html.accessibility-text-scale-110 { font-size: 110%; }
+      html.accessibility-text-scale-125 { font-size: 125%; }
+      html.accessibility-text-scale-150 { font-size: 150%; }
+
+      /* 3. Visual: Spacing */
+      body.accessibility-spacing-wide * {
+        letter-spacing: 0.1em !important;
+        word-spacing: 0.2em !important;
+      }
+      body.accessibility-line-height * {
+        line-height: 2 !important;
+      }
+
+      /* 4. Visual: Fonts */
+      .accessibility-dyslexia * {
+        font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif !important;
+      }
+
+      /* 5. Motor: Cursor */
+      .accessibility-large-cursor {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='black' stroke='white' stroke-width='2'%3E%3Cpath d='M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z'/%3E%3C/svg%3E"), auto !important;
+      }
+      .accessibility-large-cursor a, 
+      .accessibility-large-cursor button,
+      .accessibility-large-cursor [role="button"] {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='%232563eb' stroke='white' stroke-width='2'%3E%3Cpath d='M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z'/%3E%3C/svg%3E"), pointer !important;
+      }
+
+      /* 6. Motor: Motion */
+      body.accessibility-pause-motion *,
+      body.accessibility-pause-motion *::before,
+      body.accessibility-pause-motion *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      /* 7. Navigation: Links */
+      body.accessibility-highlight-links a {
+        text-decoration: underline !important;
+        font-weight: 800 !important;
+        color: #2563eb !important;
+        background-color: #fef08a !important; /* Yellow-200 */
+        padding: 0 4px;
+        border-radius: 2px;
+      }
+      
+      /* Skip Link */
+      .skip-link {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        z-index: 99999;
+        background: #2563eb;
+        color: white;
+        padding: 1rem;
+        font-weight: bold;
+        border-radius: 0 0 8px 8px;
+      }
+      .skip-link:focus {
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Signvrse",
+  "description": "A futuristic AI-powered sign language technology platform featuring real-time interpretation, avatar generation, and inclusive communication tools.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
