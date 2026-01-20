@@ -442,7 +442,7 @@ export default function TextVideoHover({ children, videoSrc, className = '' }: T
         
         {showPlayButton && (
           <span 
-            className="absolute right-[-45px] top-1/2 -translate-y-1/2 w-9 h-9 z-10 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all hover:brightness-110 hover:scale-110 shadow-lg animate-[fadeInSlide_0.3s_ease] pointer-events-auto"
+            className="hidden md:flex absolute right-[-45px] top-1/2 -translate-y-1/2 w-9 h-9 z-10 rounded-full border-2 items-center justify-center cursor-pointer transition-all hover:brightness-110 hover:scale-110 shadow-lg animate-[fadeInSlide_0.3s_ease] pointer-events-auto"
             onClick={handleWrapperClick}
             onMouseEnter={(e) => e.stopPropagation()}
             style={{

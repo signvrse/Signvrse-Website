@@ -232,9 +232,9 @@ function App() {
             <div className="absolute top-[50%] left-[50%] w-[800px] h-[800px] border border-slate-100/60 dark:border-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse-slow pointer-events-none" />
           </div>
 
-          <div className="container mx-auto px-8 md:px-16 lg:px-24 relative z-10 text-center">
-          <TextVideoHover videoSrc="images\website final renders\Building inclusive future.mp4">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-tight text-slate-900 dark:text-white">
+          <div className="container mx-auto px-4 md:px-16 lg:px-24 relative z-10 text-center">
+          <TextVideoHover videoSrc="images/website final renders/Building inclusive future.mp4">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-tight text-slate-900 dark:text-white">
               Building a More <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-brand-500 to-blue-400 dark:from-brand-400 dark:via-brand-300 dark:to-blue-300">
                 Inclusive Future
@@ -245,7 +245,7 @@ function App() {
             </TextVideoHover>
 
             <div>
-            <TextVideoHover videoSrc="images\translated\Patnering with global organisations.mp4">
+            <TextVideoHover videoSrc="images/translated/Patnering with global organisations.mp4">
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-12 leading-relaxed">
               Partnering with organizations worldwide to create AI-powered sign
               language technology that breaks communication barriers using
@@ -254,7 +254,7 @@ function App() {
             </TextVideoHover>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 md:mb-20">
               <button
                 onClick={() =>
                   window.open("https://calendly.com/signvrse/30min", "_blank")
@@ -279,7 +279,7 @@ function App() {
             </div>
 
             {/* Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-200/60 dark:border-white/10 pt-12 max-w-5xl mx-auto backdrop-blur-md bg-white/40 dark:bg-slate-900/40 rounded-3xl p-8 border border-white/50 dark:border-white/5 shadow-sm">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 border-t border-slate-200/60 dark:border-white/10 pt-8 md:pt-12 max-w-5xl mx-auto backdrop-blur-md bg-white/40 dark:bg-slate-900/40 rounded-3xl p-6 md:p-8 border border-white/50 dark:border-white/5 shadow-sm">
               {[
                 { label: "User Testing", value: "8,000 hrs" },
                 { label: "Development", value: "7,000 hrs" },
@@ -287,7 +287,7 @@ function App() {
                 { label: "Deaf People in Africa", value: "40M" },
               ].map((metric, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-brand-900 dark:text-brand-100 mb-2">
+                  <div className="text-2xl md:text-4xl font-bold text-brand-900 dark:text-brand-100 mb-2">
                     {metric.value}
                   </div>
                   <div className="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
@@ -305,18 +305,18 @@ function App() {
           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-50 dark:from-slate-950 to-transparent z-10"></div>
 
           <div className="container mx-auto px-8 mb-8 text-center">
-            <TextVideoHover videoSrc="images\translated\home page.mp4">
+            <TextVideoHover videoSrc="images/translated/home page.mp4">
             <p className="text-sm font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest">
               Trusted by innovative teams worldwide
             </p>
             </TextVideoHover>
           </div>
 
-          <div className="flex gap-20 animate-marquee whitespace-nowrap transition-all duration-500">
+          <div className="flex gap-8 md:gap-20 animate-marquee whitespace-nowrap transition-all duration-500">
             {/* Logo Strip (Duplicated for infinite scroll) */}
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                <div className="flex items-center gap-20 min-w-full">
+                <div className="flex items-center gap-8 md:gap-20 min-w-full">
                   {partners.map((partner, index) => (
                     <img
                       key={index}
@@ -332,11 +332,11 @@ function App() {
         </section>
 
         {/* About / Mission Teaser */}
-        <section className="py-24 bg-white dark:bg-slate-950">
-          <div className="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col md:flex-row items-center gap-16">
+        <section className="py-16 md:py-24 bg-white dark:bg-slate-950">
+          <div className="container mx-auto px-4 md:px-16 lg:px-24 flex flex-col md:flex-row items-center gap-12 md:gap-16">
             <div className="w-full md:w-1/2">
-              <TextVideoHover videoSrc="images\website final renders\africas leading inclusive.mp4">
-              <h2 className="text-4xl font-bold mb-6 text-slate-900 dark:text-white">
+              <TextVideoHover videoSrc="images/website final renders/africas leading inclusive.mp4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900 dark:text-white">
                 Africa's Leading{" "}
                 <span className="text-brand-600 dark:text-brand-400">
                   Inclusive Technology
@@ -344,7 +344,7 @@ function App() {
                 Platform
               </h2>
               </TextVideoHover>
-              {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
+              {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 Signvrse is pioneering the use of Large Language Models (LLMs)
                 and computer vision to translate spoken language into sign
@@ -352,7 +352,7 @@ function App() {
                 the gap between the deaf and hearing communities.
               </p>
               {/*</TextVideoHover> */}
-              <TextVideoHover videoSrc="images\translated\home page.mp4">
+              <TextVideoHover videoSrc="images/translated/home page.mp4">
               <button
                 onClick={() => setView("ABOUT")}
                 className="text-brand-600 dark:text-brand-400 font-bold flex items-center gap-2 hover:gap-3 transition-all"
@@ -361,7 +361,7 @@ function App() {
               </button>
               </TextVideoHover>
             </div>
-            <div className="w-full md:w-1/2 relative h-[400px] bg-brand-50 dark:bg-slate-900 rounded-2xl border border-brand-100 dark:border-brand-900/30 overflow-hidden flex items-center justify-center shadow-inner">
+            <div className="w-full md:w-1/2 relative h-[300px] md:h-[400px] bg-brand-50 dark:bg-slate-900 rounded-2xl border border-brand-100 dark:border-brand-900/30 overflow-hidden flex items-center justify-center shadow-inner">
               <video
                 className="absolute inset-0 w-full h-full object-cover"
                 autoPlay
@@ -375,16 +375,16 @@ function App() {
         </section>
 
         {/* Products */}
-        <section className="py-24 bg-slate-50 dark:bg-slate-900">
-          <div className="container mx-auto px-8 md:px-16 lg:px-24">
-            <div className="text-center mb-16">
-              <TextVideoHover videoSrc="images\website final renders\our product.mp4">
-              <h2 className="text-4xl font-bold mb-4 text-slate-900 dark:text-white">
+        <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-900">
+          <div className="container mx-auto px-4 md:px-16 lg:px-24">
+            <div className="text-center mb-12 md:mb-16">
+              <TextVideoHover videoSrc="images/website final renders/our product.mp4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
                 Our Products
               </h2>
               </TextVideoHover>
               <br />
-              <TextVideoHover videoSrc="images\website final renders\Advanced tools.mp4">
+              <TextVideoHover videoSrc="images/website final renders/Advanced tools.mp4">
               <p className="text-slate-500 dark:text-slate-400">
                 Advanced tools for every accessibility need
               </p>
@@ -419,7 +419,7 @@ function App() {
                 onClick={() => setView("PRODUCTS")}
                 className="cursor-pointer"
               >
-                <TextVideoHover videoSrc="images\website final renders\terp for web final render.mp4">
+                <TextVideoHover videoSrc="images/website final renders/terp for web final render.mp4">
                 <h3 className="text-2xl font-bold mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
                   Terp for Web
                   <span className="px-2 py-1 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 text-xs rounded-full">
@@ -432,7 +432,7 @@ function App() {
                   avatar.
                 </p>
                 </TextVideoHover>
-                {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
+                {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
                 <button className="text-brand-600 dark:text-brand-400 font-bold flex items-center gap-2 hover:gap-4 transition-all">
                   Learn More <ArrowRight size={16} />
                 </button>
@@ -443,9 +443,9 @@ function App() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-24 bg-white dark:bg-slate-950">
-          <div className="container mx-auto px-8 md:px-16 lg:px-24">
-            <div className="grid md:grid-cols-3 gap-8">
+        <section className="py-16 md:py-24 bg-white dark:bg-slate-950">
+          <div className="container mx-auto px-4 md:px-16 lg:px-24">
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
               {[
                 {
                   icon: Cpu,
@@ -476,7 +476,7 @@ function App() {
                       size={24}
                     />
                   </div>
-                  <TextVideoHover videoSrc="images\website final renders\Ai powered core.mp4">
+                  <TextVideoHover videoSrc="images/website final renders/Ai powered core.mp4">
                   <h4 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">
                     {f.title}
                   </h4>
@@ -491,10 +491,10 @@ function App() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
-          <div className="container mx-auto px-8 md:px-16 lg:px-24">
-            <div className="text-center mb-16">
-             {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
+        <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+          <div className="container mx-auto px-4 md:px-16 lg:px-24">
+            <div className="text-center mb-12 md:mb-16">
+             {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
               <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">
                 Hear from our Community
               </h2>
@@ -509,10 +509,10 @@ function App() {
         </section>
 
         {/* General FAQs */}
-        <section className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
-          <div className="container mx-auto px-8 md:px-16 lg:px-24 max-w-4xl">
-           {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
-            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900 dark:text-white">
+        <section className="py-16 md:py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+          <div className="container mx-auto px-4 md:px-16 lg:px-24 max-w-4xl">
+           {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
+            <h2 className="text-3xl font-bold text-center mb-12 md:mb-16 text-slate-900 dark:text-white">
               Common Questions
             </h2>
             {/*</TextVideoHover> */}
@@ -526,7 +526,7 @@ function App() {
                     onClick={() => toggleFaq(index)}
                     className="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-slate-900 dark:text-white focus:outline-none"
                   >
-                    {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
+                    {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
                     {faq.question}
                     {/*</TextVideoHover> */}
                     {openFaq === index ? (
@@ -545,7 +545,7 @@ function App() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
+                    {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
                     {faq.answer}
                     {/*</TextVideoHover> */}
                   </div>
@@ -556,19 +556,19 @@ function App() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-24 bg-gradient-to-br from-brand-600 to-brand-800 dark:from-brand-900 dark:to-slate-900 text-white relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-brand-600 to-brand-800 dark:from-brand-900 dark:to-slate-900 text-white relative overflow-hidden">
           {/* Background Decorations */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-black/10 rounded-full blur-[80px] pointer-events-none"></div>
 
-          <div className="container mx-auto px-8 md:px-16 lg:px-24 max-w-4xl relative z-10">
+          <div className="container mx-auto px-4 md:px-16 lg:px-24 max-w-4xl relative z-10">
             <div className="text-center mb-12">
-              {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
-              <h2 className="text-4xl font-bold mb-4">
+              {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Start the Conversation
               </h2>
               {/*</TextVideoHover> */}
-              {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
+              {/* <TextVideoHover videoSrc="images/translated/home page.mp4"> */}
               <p className="text-brand-100 text-lg">
                 Interested in using Signvrse for your organization? We'd love to
                 hear from you.
