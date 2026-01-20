@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Logo } from './Logo';
 import { Twitter, Facebook, Instagram, Linkedin, Youtube, ArrowRight, Mail } from 'lucide-react';
 import { sendNewsletterEmail } from '../lib/api';
+import { Link } from 'react-router-dom';
 
 const Tiktok = ({ size = 24, className }: { size?: number | string; className?: string }) => (
   <svg
@@ -24,19 +25,13 @@ interface FooterProps {
     onNavigate?: (view: any) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+export const Footer: React.FC<FooterProps> = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{type: 'success' | 'error', message: string} | null>(null);
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleNav = (e: React.MouseEvent, view: string) => {
-    e.preventDefault();
-    scrollToTop();
-    if (onNavigate) onNavigate(view);
   };
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -148,11 +143,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div>
               <h4 className="font-bold text-white text-lg mb-6">Company</h4>
               <ul className="space-y-4">
-                <li><a href="#" onClick={(e) => handleNav(e, 'LANDING')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Home</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, 'ABOUT')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">About Us</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, 'CAREERS')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Careers</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, 'CONTACT')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Contact</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Partners</a></li>
+                <li><Link to="/" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Home</Link></li>
+                <li><Link to="/about" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">About Us</Link></li>
+                <li><Link to="/careers" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Careers</Link></li>
+                <li><Link to="/contact" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Contact</Link></li>
+                <li><Link to="/partnerships" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Partners</Link></li>
               </ul>
             </div>
 
@@ -160,11 +155,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div>
               <h4 className="font-bold text-white text-lg mb-6">Solutions</h4>
               <ul className="space-y-4">
-                <li><a href="#" onClick={(e) => handleNav(e, 'PRODUCTS')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Sign Translation</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, 'PRODUCTS')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">AI Avatars</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, 'PRODUCTS')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Web Accessibility</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, 'PRODUCTS')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Motion Capture</a></li>
-                <li><a href="#" onClick={(e) => handleNav(e, 'PRODUCTS')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">API Access</a></li>
+                <li><Link to="/products" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Sign Translation</Link></li>
+                <li><Link to="/products" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">AI Avatars</Link></li>
+                <li><Link to="/products" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Web Accessibility</Link></li>
+                <li><Link to="/products" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Motion Capture</Link></li>
+                <li><Link to="/products" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">API Access</Link></li>
               </ul>
             </div>
 
@@ -172,8 +167,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div>
               <h4 className="font-bold text-white text-lg mb-6">Resources</h4>
               <ul className="space-y-4">
-                <li><a href="#" onClick={(e) => handleNav(e, 'BLOG')} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Blog</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Case Studies</a></li>
+                <li><Link to="/blog" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Blog</Link></li>
+                <li><Link to="/case-studies" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Case Studies</Link></li>
                 <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Community</a></li>
                 <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Help Center</a></li>
                 <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Documentation</a></li>
@@ -190,8 +185,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </p>
           
           <div className="flex items-center gap-8">
-            <a href="#" onClick={(e) => handleNav(e, 'PRIVACY')} className="text-sm text-slate-500 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" onClick={(e) => handleNav(e, 'TERMS')} className="text-sm text-slate-500 hover:text-white transition-colors">Terms of Service</a>
+            <Link to="/privacy" onClick={scrollToTop} className="text-sm text-slate-500 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" onClick={scrollToTop} className="text-sm text-slate-500 hover:text-white transition-colors">Terms of Service</Link>
             <a href="#" className="text-sm text-slate-500 hover:text-white transition-colors">Cookies Settings</a>
           </div>
         </div>

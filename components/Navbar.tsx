@@ -2,16 +2,18 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Logo } from './Logo';
-import TextVideoHover from './TextVideoHover';
+import { Link, useLocation } from 'react-router-dom';
 
 interface NavbarProps {
-  currentView: string;
-  onNavigate: (view: any) => void;
+  currentView?: string;
+  onNavigate?: (view: any) => void;
+  onLaunchDemo?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const location = useLocation();
 
   // Scroll Progress Listener
   useEffect(() => {
@@ -26,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isActive = (view: string) => currentView === view ? 'text-brand-600 dark:text-brand-400 font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400';
+  const isActive = (path: string) => location.pathname === path ? 'text-brand-600 dark:text-brand-400 font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400';
 
   return (
     <div className="fixed top-4 md:top-6 left-0 right-0 mx-auto w-[95%] md:w-[90%] max-w-7xl z-50">
@@ -39,43 +41,43 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
       >
         <div className="flex justify-between items-center relative z-10">
           {/* Logo */}
-          <div onClick={() => onNavigate("LANDING")}>
+          <Link to="/">
             <Logo className="w-16 h-16 sm:w-20 sm:h-20" />
-          </div>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-12 text-sm font-medium">
-            <button
-              onClick={() => onNavigate("LANDING")}
-              className={`transition-colors ${isActive("LANDING")}`}
+            <Link
+              to="/"
+              className={`transition-colors ${isActive("/")}`}
             >
                 Home
-            </button>
-            <button
-              onClick={() => onNavigate("ABOUT")}
-              className={`transition-colors ${isActive("ABOUT")}`}
+            </Link>
+            <Link
+              to="/about"
+              className={`transition-colors ${isActive("/about")}`}
             >
                 Who We Are
-            </button>
-            <button
-              onClick={() => onNavigate("PRODUCTS")}
-              className={`transition-colors ${isActive("PRODUCTS")}`}
+            </Link>
+            <Link
+              to="/products"
+              className={`transition-colors ${isActive("/products")}`}
             >
                 Products
-            </button>
-            <button
-              onClick={() => onNavigate("PARTNERSHIPS")}
-              className={`transition-colors ${isActive("PARTNERSHIPS")}`}
+            </Link>
+            <Link
+              to="/partnerships"
+              className={`transition-colors ${isActive("/partnerships")}`}
             >
                 Partners
-            </button>
-            <button
-              onClick={() => onNavigate("CONTACT")}
-              className={`transition-colors ${isActive("CONTACT")}`}
+            </Link>
+            <Link
+              to="/contact"
+              className={`transition-colors ${isActive("/contact")}`}
             >
                 Contact
               
-            </button>
+            </Link>
           </div>
 
           {/* Right Actions */}
@@ -103,51 +105,41 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
       {/* Mobile Menu Dropdown (Outside the clipped nav) */}
       {mobileMenuOpen && (
        <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-4 flex flex-col gap-8 lg:hidden animate-in slide-in-from-top-2 fade-in duration-200 z-50">
-          <button
-            onClick={() => {
-              onNavigate("LANDING");
-              setMobileMenuOpen(false);
-            }}
+          <Link
+            to="/"
+            onClick={() => setMobileMenuOpen(false)}
             className="text-left font-medium text-brand-600 dark:text-brand-400"
           >
               Home
-          </button>
-          <button
-            onClick={() => {
-              onNavigate("PRODUCTS");
-              setMobileMenuOpen(false);
-            }}
+          </Link>
+          <Link
+            to="/products"
+            onClick={() => setMobileMenuOpen(false)}
             className="text-left font-medium text-slate-600 dark:text-slate-300"
           >
               Products
-          </button>
-          <button
-            onClick={() => {
-              onNavigate("ABOUT");
-              setMobileMenuOpen(false);
-            }}
+          </Link>
+          <Link
+            to="/about"
+            onClick={() => setMobileMenuOpen(false)}
             className="text-left font-medium text-slate-600 dark:text-slate-300"
           >
               Who We Are
-          </button>
-          <button
-            onClick={() => {
-              onNavigate("PARTNERSHIPS");
-              setMobileMenuOpen(false);
-            }}
+          </Link>
+          <Link
+            to="/partnerships"
+            onClick={() => setMobileMenuOpen(false)}
             className="text-left font-medium text-slate-600 dark:text-slate-300"
           >
               Partners
-          </button>
-          <button
-            onClick={() => {
-              onNavigate("CONTACT");
-              setMobileMenuOpen(false);
-            }}
+          </Link>
+          <Link
+            to="/contact"
+            onClick={() => setMobileMenuOpen(false)}
             className="text-left font-medium text-slate-600 dark:text-slate-300"
           >
               Contact
-          </button>
+          </Link>
           <button
             onClick={() => {
               window.open("https://terp360.signvrse.com", "_blank");
