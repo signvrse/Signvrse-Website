@@ -344,14 +344,14 @@ function App() {
                 Platform
               </h2>
               </TextVideoHover>
-              <TextVideoHover videoSrc="images\translated\we are a social enterprise.mp4">
+              {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 Signvrse is pioneering the use of Large Language Models (LLMs)
                 and computer vision to translate spoken language into sign
                 language and vice versa, in real-time. Our mission is to bridge
                 the gap between the deaf and hearing communities.
               </p>
-              </TextVideoHover>
+              {/*</TextVideoHover> */}
               <TextVideoHover videoSrc="images\translated\home page.mp4">
               <button
                 onClick={() => setView("ABOUT")}
@@ -432,11 +432,11 @@ function App() {
                   avatar.
                 </p>
                 </TextVideoHover>
-                <TextVideoHover videoSrc="images\translated\home page.mp4">
+                {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
                 <button className="text-brand-600 dark:text-brand-400 font-bold flex items-center gap-2 hover:gap-4 transition-all">
                   Learn More <ArrowRight size={16} />
                 </button>
-                </TextVideoHover>
+                {/*</TextVideoHover> */}
               </div>
             </div>
           </div>
@@ -494,17 +494,15 @@ function App() {
         <section className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
           <div className="container mx-auto px-8 md:px-16 lg:px-24">
             <div className="text-center mb-16">
-              <TextVideoHover videoSrc="images\translated\home page.mp4">
+             {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
               <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">
                 Hear from our Community
               </h2>
-              </TextVideoHover>
+          {/* </TextVideoHover> */}
               <br />
-              <TextVideoHover videoSrc="images\translated\home page.mp4">
               <p className="text-slate-500 dark:text-slate-400">
                 Real stories from people using Signvrse everyday.
               </p>
-              </TextVideoHover>
             </div>
             <Testimonials />
           </div>
@@ -513,11 +511,11 @@ function App() {
         {/* General FAQs */}
         <section className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
           <div className="container mx-auto px-8 md:px-16 lg:px-24 max-w-4xl">
-            <TextVideoHover videoSrc="images\translated\home page.mp4">
+           {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
             <h2 className="text-3xl font-bold text-center mb-16 text-slate-900 dark:text-white">
               Common Questions
             </h2>
-            </TextVideoHover>
+            {/*</TextVideoHover> */}
             <div className="space-y-4">
               {generalFaqs.map((faq, index) => (
                 <div
@@ -528,9 +526,9 @@ function App() {
                     onClick={() => toggleFaq(index)}
                     className="w-full px-6 py-5 text-left flex items-center justify-between font-bold text-slate-900 dark:text-white focus:outline-none"
                   >
-                    <TextVideoHover videoSrc="images\translated\home page.mp4">
+                    {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
                     {faq.question}
-                    </TextVideoHover>
+                    {/*</TextVideoHover> */}
                     {openFaq === index ? (
                       <Minus
                         size={20}
@@ -547,9 +545,9 @@ function App() {
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <TextVideoHover videoSrc="images\translated\home page.mp4">
+                    {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
                     {faq.answer}
-                    </TextVideoHover>
+                    {/*</TextVideoHover> */}
                   </div>
                 </div>
               ))}
@@ -565,17 +563,17 @@ function App() {
 
           <div className="container mx-auto px-8 md:px-16 lg:px-24 max-w-4xl relative z-10">
             <div className="text-center mb-12">
-              <TextVideoHover videoSrc="images\translated\home page.mp4">
+              {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
               <h2 className="text-4xl font-bold mb-4">
                 Start the Conversation
               </h2>
-              </TextVideoHover>
-              <TextVideoHover videoSrc="images\translated\home page.mp4">
+              {/*</TextVideoHover> */}
+              {/* <TextVideoHover videoSrc="images\translated\home page.mp4"> */}
               <p className="text-brand-100 text-lg">
                 Interested in using Signvrse for your organization? We'd love to
                 hear from you.
               </p>
-              </TextVideoHover>
+              {/*</TextVideoHover> */}
             </div>
 
             <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl text-slate-900 dark:text-white">
