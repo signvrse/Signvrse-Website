@@ -13,6 +13,7 @@ import { BlogPage } from './components/BlogPage';
 import { CookieBanner } from './components/CookieBanner';
 import { AccessibilityWidget } from './components/AccessibilityWidget';
 import { LandingPage } from './components/LandingPage';
+import { Preloader } from './components/Preloader';
 
 function App() {
   const navigate = useNavigate();
@@ -81,6 +82,7 @@ function App() {
 
   return (
     <>
+        <Preloader />
         <a href="#main-content" className="skip-link">Skip to Content</a>
         <div id="main-content">
             <Routes>
