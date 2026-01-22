@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { AboutPage } from './components/AboutPage';
 import { WhatWeDoPage } from './components/WhatWeDoPage';
 import { CaseStudiesPage } from './components/CaseStudiesPage';
@@ -95,6 +95,15 @@ function App() {
                 <Route path="/blog" element={<BlogPage {...commonProps} />} />
                 <Route path="/privacy" element={<PrivacyPolicy {...commonProps} />} />
                 <Route path="/terms" element={<TermsOfService {...commonProps} />} />
+                
+                {/* Redirects for singular/alternate paths */}
+                <Route path="/product" element={<Navigate to="/products" replace />} />
+                <Route path="/partnership" element={<Navigate to="/partnerships" replace />} />
+                <Route path="/career" element={<Navigate to="/careers" replace />} />
+                <Route path="/case-study" element={<Navigate to="/case-studies" replace />} />
+                <Route path="/whatwedo" element={<Navigate to="/what-we-do" replace />} />
+                <Route path="/term" element={<Navigate to="/terms" replace />} />
+
                 {/* Fallback */}
                 <Route path="*" element={<LandingPage />} />
             </Routes>
