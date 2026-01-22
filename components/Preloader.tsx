@@ -32,7 +32,7 @@ export const Preloader: React.FC = () => {
       <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
         
         {/* Video Container */}
-        <div className="relative w-full max-w-4xl aspect-video mx-auto px-4">
+        <div className="relative w-full max-w-4xl aspect-video mx-auto px-4 -translate-y-16">
             <video
                 ref={videoRef}
                 src="/images/translated/Welcome.mp4"
