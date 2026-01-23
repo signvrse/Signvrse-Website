@@ -1,7 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 export const Preloader: React.FC = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() => {
+    // Check if preloader has already been shown in this session
+    if (typeof window !== 'undefined') {
+        return !sessionStorage.getItem('hasSeenPreloader');
+    }
+    return true;
+  });
+  
   const [animate, setAnimate] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -11,12 +18,17 @@ export const Preloader: React.FC = () => {
   };
 
   useEffect(() => {
+    if (!show) return;
+
+    // Mark as seen immediately so reloads don't trigger it again
+    sessionStorage.setItem('hasSeenPreloader', 'true');
+
     // Safety timeout in case video doesn't load or play
     const safetyTimer = setTimeout(() => {
         if (show) {
             handleVideoEnd();
         }
-    }, 12000); // Increased to 12s to allow reading
+    }, 12000); // 12s max
 
     return () => clearTimeout(safetyTimer);
   }, [show]);
@@ -32,7 +44,7 @@ export const Preloader: React.FC = () => {
       <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
         
         {/* Video Container */}
-        <div className="relative w-full max-w-4xl aspect-video mx-auto px-4 -translate-y-16">
+        <div className="relative w-full max-w-4xl aspect-video mx-auto px-4">
             <video
                 ref={videoRef}
                 src="/images/translated/Welcome.mp4"
@@ -51,7 +63,7 @@ export const Preloader: React.FC = () => {
         <div className="absolute bottom-10 left-0 right-0 px-6 text-center z-20">
             <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-6 shadow-xl max-w-2xl mx-auto border border-slate-200 dark:border-slate-800 animate-slide-up">
                 <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2">
-                    Hello, Welcome to Signvrse.
+                    Welcome to Signvrse
                 </h2>
                 <p className="text-brand-600 dark:text-brand-400 font-medium text-lg md:text-xl">
                     Swipe or hover over text to play sign language translation
