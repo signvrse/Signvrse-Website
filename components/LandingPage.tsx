@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   ArrowRight, PlayCircle, Users, Shield, 
   Cpu, Sparkles, MessageSquare, Plus, Minus, ScanFace, Send, Building2, Ear
@@ -42,7 +42,25 @@ const partners = [
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
+  const [showGetStarted, setShowGetStarted] = useState(false);
+  const getStartedRef = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Click Outside for Get Started Dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (getStartedRef.current && !getStartedRef.current.contains(event.target as Node)) {
+        setShowGetStarted(false);
+      }
+    };
+
+    if (showGetStarted) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showGetStarted]);
   
   // Landing Page Contact Form State
   const [landingFormData, setLandingFormData] = useState({
@@ -187,14 +205,40 @@ export const LandingPage: React.FC = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 md:mb-20">
-              <button
-                onClick={() =>
-                  window.open("https://calendly.com/signvrse/30min", "_blank")
-                }
-                className="px-8 py-4 rounded-full bg-slate-900 dark:bg-brand-600 hover:bg-slate-800 dark:hover:bg-brand-500 text-white font-bold text-lg shadow-xl shadow-slate-900/20 dark:shadow-brand-600/20 transition-all hover:scale-105 flex items-center gap-2"
-              >
-                Get Started <ArrowRight size={18} />
-              </button>
+              <div className="relative" ref={getStartedRef}>
+                <button
+                  onClick={() => setShowGetStarted(!showGetStarted)}
+                  className="px-8 py-4 rounded-full bg-slate-900 dark:bg-brand-600 hover:bg-slate-800 dark:hover:bg-brand-500 text-white font-bold text-lg shadow-xl shadow-slate-900/20 dark:shadow-brand-600/20 transition-all hover:scale-105 flex items-center gap-2"
+                >
+                  Get Started <ArrowRight size={18} />
+                </button>
+
+                {showGetStarted && (
+                  <div className="absolute top-full left-0 mt-4 w-full min-w-[240px] bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden z-50 flex flex-col py-2 animate-in fade-in zoom-in-95 duration-200">
+                    <button 
+                    onClick={() => {
+                      window.open("https://terp360.signvrse.com/", "_blank");
+                      setShowGetStarted(false);
+                    }} 
+                      className="px-6 py-4 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold transition-colors flex items-center justify-between group"
+                    >
+                      Explore Terp 360
+                      <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-500" />
+                    </button>
+                    <div className="h-px bg-slate-100 dark:bg-slate-800 mx-4"></div>
+                    <button 
+                      onClick={() => {
+                        window.open("https://terpweb.signvrse.com/", "_blank");
+                        setShowGetStarted(false);
+                      }} 
+                      className="px-6 py-4 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold transition-colors flex items-center justify-between group"
+                    >
+                      Explore Terp for Web
+                      <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-500" />
+                    </button>
+                  </div>
+                )}
+              </div>
     
               <button
                 onClick={() =>

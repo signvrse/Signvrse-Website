@@ -284,11 +284,149 @@
         right: 0;
         text-align: center;
       }
+
+      /* Google Translate Overrides - Hide Banner & Tooltips */
+      .goog-te-banner-frame.skiptranslate, 
+      .goog-te-banner-frame {
+          display: none !important;
+          visibility: hidden !important;
+          height: 0 !important;
+          width: 0 !important;
+      }
+      body {
+          top: 0px !important;
+          margin-top: 0px !important;
+          position: static !important;
+      }
+      .goog-tooltip {
+          display: none !important;
+      }
+      .goog-te-gadget-icon {
+          display: none !important;
+      }
+      .goog-text-highlight {
+          background-color: transparent !important;
+          box-shadow: none !important;
+      }
+      /* Hide the popup that appears on hover */
+      #goog-gt-tt {
+          display: none !important;
+          visibility: hidden !important;
+      }
     </style>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
+    
+    <!-- Script to forcefully hide Google Translate Banner -->
+    <script>
+      (function() {
+        // Continuous check to remove the banner
+        function hideGoogleTranslate() {
+            // 1. Reset Body and HTML Styles
+            if (document.body) {
+                document.body.style.setProperty('top', '0px', 'important');
+                document.body.style.setProperty('margin-top', '0px', 'important');
+                document.body.style.setProperty('position', 'static', 'important');
+            }
+            if (document.documentElement) {
+                document.documentElement.style.setProperty('top', '0px', 'important');
+                document.documentElement.style.setProperty('margin-top', '0px', 'important');
+            }
+
+            // 2. Find and Remove/Hide Banner Elements
+            const selectors = [
+                '.goog-te-banner-frame', 
+                'iframe.goog-te-banner-frame',
+                '#goog-gt-tt',
+                '.goog-te-balloon-frame',
+                '.goog-tooltip',
+                '.goog-text-highlight',
+                '.skiptranslate' // Be careful not to hide body if it has this class, but usually banner components have it
+            ];
+
+            selectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(el => {
+                    // Don't hide the body if it gets the class
+                    if (el === document.body) return;
+                    
+                    el.style.setProperty('display', 'none', 'important');
+                    el.style.setProperty('visibility', 'hidden', 'important');
+                    el.style.setProperty('height', '0px', 'important');
+                    el.style.setProperty('width', '0px', 'important');
+                    el.style.setProperty('position', 'absolute', 'important');
+                    el.style.setProperty('top', '-10000px', 'important');
+                    el.style.setProperty('opacity', '0', 'important');
+                    el.style.setProperty('pointer-events', 'none', 'important');
+                });
+            });
+            
+            // 3. Hide iframes that look like Google Translate
+            const iframes = document.getElementsByTagName('iframe');
+            for (let i = 0; i < iframes.length; i++) {
+                const iframe = iframes[i];
+                if (iframe.id.includes('goog') || 
+                    iframe.classList.contains('goog-te-banner-frame') || 
+                    (iframe.src && iframe.src.includes('translate.google')) ||
+                    (iframe.title && iframe.title.includes('Translate'))) {
+                     iframe.style.setProperty('display', 'none', 'important');
+                     iframe.style.setProperty('visibility', 'hidden', 'important');
+                     iframe.style.setProperty('height', '0px', 'important');
+                     iframe.style.setProperty('width', '0px', 'important');
+                     iframe.style.setProperty('position', 'absolute', 'important');
+                     iframe.style.setProperty('top', '-10000px', 'important');
+                     iframe.style.setProperty('opacity', '0', 'important');
+                     iframe.style.setProperty('pointer-events', 'none', 'important');
+                }
+            }
+        }
+
+        // Run immediately
+        hideGoogleTranslate();
+
+        // Run on MutationObserver
+        const observer = new MutationObserver(hideGoogleTranslate);
+        observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+
+        // Run on interval
+        setInterval(hideGoogleTranslate, 50);
+      })();
+    </script>
+    <style>
+        /* Nuclear CSS Option */
+        iframe[src*="translate.google.com"],
+        iframe[src*="google.com/translate"],
+        iframe[id^=":"][src*="google"],
+        .goog-te-banner-frame {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            top: -9999px !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+        
+        body, html { 
+            top: 0 !important; 
+            margin-top: 0 !important; 
+            position: static !important; 
+        }
+        
+        .goog-tooltip, #goog-gt-tt, .goog-text-highlight {
+            display: none !important;
+        }
+    </style>
 </head>
   <body>
     <div id="root"></div>
+    <div id="google_translate_element" style="display:none"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script type="module" src="/index.tsx"></script>
 </body>
 </html>

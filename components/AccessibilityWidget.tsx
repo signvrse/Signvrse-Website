@@ -47,6 +47,47 @@ export const AccessibilityWidget: React.FC<AccessibilityWidgetProps> = ({ darkMo
 
   const [mouseY, setMouseY] = useState(0);
 
+  const languageCodes: {[key: string]: string} = {
+    'English': 'en',
+    'Spanish': 'es',
+    'French': 'fr',
+    'Swahili': 'sw',
+    'Arabic': 'ar'
+  };
+
+  // Initialize language from cookie
+  useEffect(() => {
+    const getCookie = (name: string) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+    };
+
+    const cookie = getCookie('googtrans');
+    if (cookie) {
+        // Cookie format is usually /source/target or /target
+        // e.g., /en/es
+        const parts = cookie.split('/');
+        const targetCode = parts[parts.length - 1]; 
+        
+        // Reverse lookup
+        const lang = Object.keys(languageCodes).find(key => languageCodes[key] === targetCode);
+        if (lang) {
+            setCurrentLang(lang);
+        }
+    }
+  }, []);
+
+  const changeLanguage = (lang: string) => {
+    const code = languageCodes[lang];
+    if (code) {
+      document.cookie = `googtrans=/en/${code}; path=/`;
+      setCurrentLang(lang);
+      setShowLanguageModal(false);
+      window.location.reload();
+    }
+  };
+
   // --- Persistence ---
   useEffect(() => {
     const savedSettings = localStorage.getItem('signvrse-accessibility');
@@ -58,6 +99,18 @@ export const AccessibilityWidget: React.FC<AccessibilityWidgetProps> = ({ darkMo
   useEffect(() => {
     localStorage.setItem('signvrse-accessibility', JSON.stringify(settings));
   }, [settings]);
+
+  // --- Body Scroll Lock ---
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   // --- Click Outside to Close ---
   useEffect(() => {
@@ -234,7 +287,7 @@ export const AccessibilityWidget: React.FC<AccessibilityWidgetProps> = ({ darkMo
                   </div>
                   <div className="space-y-2">
                       {['English', 'Spanish', 'French', 'Swahili', 'Arabic'].map(lang => (
-                          <button key={lang} onClick={() => { setCurrentLang(lang); setShowLanguageModal(false); }} className={`w-full p-3 rounded-lg flex items-center justify-between ${currentLang === lang ? 'bg-brand-50 text-brand-700' : 'hover:bg-slate-50 dark:hover:bg-slate-800'}`}>
+                          <button key={lang} onClick={() => changeLanguage(lang)} className={`w-full p-3 rounded-lg flex items-center justify-between ${currentLang === lang ? 'bg-brand-50 text-brand-700' : 'hover:bg-slate-50 dark:hover:bg-slate-800'}`}>
                               {lang} {currentLang === lang && <Check size={16} />}
                           </button>
                       ))}
