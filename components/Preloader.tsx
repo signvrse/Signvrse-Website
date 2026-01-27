@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-export const Preloader: React.FC = () => {
+interface PreloaderProps {
+    onComplete?: () => void;
+}
+
+export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [show, setShow] = useState(() => {
     // Check if preloader has already been shown in this session
     if (typeof window !== 'undefined') {
@@ -12,9 +16,18 @@ export const Preloader: React.FC = () => {
   const [animate, setAnimate] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  useEffect(() => {
+    if (!show && onComplete) {
+        onComplete();
+    }
+  }, [show, onComplete]);
+
   const handleVideoEnd = () => {
     setAnimate(true);
-    setTimeout(() => setShow(false), 500); // Wait for fade out animation
+    setTimeout(() => {
+        setShow(false);
+        if (onComplete) onComplete();
+    }, 500); // Wait for fade out animation
   };
 
   useEffect(() => {

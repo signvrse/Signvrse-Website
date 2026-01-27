@@ -2,16 +2,22 @@
 import React, { useState, useEffect } from 'react';
 import { Cookie, X } from 'lucide-react';
 
-export const CookieBanner: React.FC = () => {
+interface CookieBannerProps {
+    readyToShow?: boolean;
+}
+
+export const CookieBanner: React.FC<CookieBannerProps> = ({ readyToShow = true }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (!readyToShow) return;
+
     const consent = localStorage.getItem('signvrse-cookie-consent');
     if (!consent) {
       // Delay slightly for animation effect
       setTimeout(() => setIsVisible(true), 1000);
     }
-  }, []);
+  }, [readyToShow]);
 
   const handleAccept = () => {
     localStorage.setItem('signvrse-cookie-consent', 'accepted');

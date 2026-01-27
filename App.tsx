@@ -43,6 +43,8 @@ function App() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  const [videoFinished, setVideoFinished] = useState(false);
+
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const handleNavigate = (view: any) => {
@@ -82,7 +84,7 @@ function App() {
 
   return (
     <>
-        <Preloader />
+        <Preloader onComplete={() => setVideoFinished(true)} />
         <a href="#main-content" className="skip-link">Skip to Content</a>
         <div id="main-content">
             <Routes>
@@ -110,7 +112,7 @@ function App() {
                 <Route path="*" element={<LandingPage />} />
             </Routes>
         </div>
-        <CookieBanner />
+        <CookieBanner readyToShow={videoFinished} />
         <AccessibilityWidget darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </>
   );
