@@ -168,7 +168,6 @@ export const Footer: React.FC<FooterProps> = () => {
               <h4 className="font-bold text-white text-lg mb-6">Resources</h4>
               <ul className="space-y-4">
                 <li><Link to="/blog" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Blog</Link></li>
-                <li><Link to="/case-studies" onClick={scrollToTop} className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Case Studies</Link></li>
                 <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Community</a></li>
                 <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Help Center</a></li>
                 <li><a href="#" className="text-slate-400 hover:text-white hover:translate-x-1 transition-all inline-block">Documentation</a></li>

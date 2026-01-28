@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { AboutPage } from './components/AboutPage';
 import { WhatWeDoPage } from './components/WhatWeDoPage';
-import { CaseStudiesPage } from './components/CaseStudiesPage';
 import { PartnershipsPage } from './components/PartnershipsPage';
 import { ContactPage } from './components/ContactPage';
 import { CareersPage } from './components/CareersPage';
@@ -56,7 +55,6 @@ function App() {
           'CAREERS': '/careers',
           'PARTNERSHIPS': '/partnerships',
           'WHAT_WE_DO': '/what-we-do',
-          'CASE_STUDIES': '/case-studies',
           'PRIVACY': '/privacy',
           'TERMS': '/terms',
           'BLOG': '/blog'
@@ -95,7 +93,6 @@ function App() {
                 <Route path="/partnerships" element={<PartnershipsPage {...commonProps} />} />
                 <Route path="/careers" element={<CareersPage {...commonProps} />} />
                 <Route path="/contact" element={<ContactPage {...commonProps} />} />
-                <Route path="/case-studies" element={<CaseStudiesPage {...commonProps} />} />
                 <Route path="/blog" element={<BlogPage {...commonProps} />} />
                 <Route path="/privacy" element={<PrivacyPolicy {...commonProps} />} />
                 <Route path="/terms" element={<TermsOfService {...commonProps} />} />
@@ -104,7 +101,6 @@ function App() {
                 <Route path="/product" element={<Navigate to="/products" replace />} />
                 <Route path="/partnership" element={<Navigate to="/partnerships" replace />} />
                 <Route path="/career" element={<Navigate to="/careers" replace />} />
-                <Route path="/case-study" element={<Navigate to="/case-studies" replace />} />
                 <Route path="/whatwedo" element={<Navigate to="/what-we-do" replace />} />
                 <Route path="/term" element={<Navigate to="/terms" replace />} />
 
